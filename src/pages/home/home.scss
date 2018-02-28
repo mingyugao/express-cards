@@ -1,3 +1,23 @@
 page-home {
+  .cards-container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 
+  .card-container {
+    display: inline-block;
+    padding: 0;
+  }
+
+  .card {
+    margin-top: 5;
+    margin-bottom: 0;
+  }
+
+  .card-value {
+    font-size: 30px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    text-align: center;
+  }
 }
