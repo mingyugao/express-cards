@@ -32,6 +32,7 @@ export class DataProvider {
     let index = this.getIndexOfCard(value);
     if (index < 0) {
       this.cardsDb.push({"value":value});
+      this.cardsDb.sort((a, b) => { return a.value > b.value });
       this.storageProvider.set(DB_KEY, this.cardsDb);
     }
   }

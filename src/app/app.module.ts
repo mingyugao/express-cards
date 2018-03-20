@@ -4,7 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ManagePage } from '../pages/manage/manage';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -15,8 +14,7 @@ import { StorageProvider } from '../providers/storage/storage';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    ManagePage
+    HomePage
   ],
   imports: [
     BrowserModule,
@@ -25,8 +23,7 @@ import { StorageProvider } from '../providers/storage/storage';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    ManagePage
+    HomePage
   ],
   providers: [
     StatusBar,

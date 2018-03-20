@@ -1,31 +1,38 @@
 page-home {
+  .edit {
+    float: right;
+    height: 32px;
+    margin: 0px;
+    padding-right: 10px;
+  }
+
   .cards-container {
     padding-left: 8px;
     padding-right: 8px;
     padding-bottom: 15px;
-  }
 
-  .no-cards-message {
-    color: #d3d3d3;
-    font-size: 20px;
-    margin-top: 270px;
-    text-align: center;
-  }
+    .no-cards-message {
+      color: #d3d3d3;
+      font-size: 20px;
+      margin-top: 270px;
+      text-align: center;
+    }
 
-  .card-container {
-    display: inline-block;
-    padding: 0;
-  }
+    .card-container {
+      display: inline-block;
+      padding: 0;
 
-  .card {
-    margin-top: 15px;
-    margin-bottom: 0;
-  }
+      .card {
+        margin-top: 15px;
+        margin-bottom: 0;
 
-  .card-value {
-    font-size: 30px;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    text-align: center;
+        .card-value {
+          font-size: 30px;
+          padding-top: 60px;
+          padding-bottom: 60px;
+          text-align: center;
+        }
+      }
+    }
   }
 }
