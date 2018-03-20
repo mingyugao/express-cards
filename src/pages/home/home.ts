@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
 
 @Component({
@@ -9,7 +8,7 @@ import { DataProvider } from '../../providers/data/data';
 export class HomePage {
   cards = [];
 
-  constructor(public navCtrl: NavController, private dataProvider: DataProvider) {
+  constructor(private dataProvider: DataProvider) {
     this.cards = this.dataProvider.getCards();
   }
 }

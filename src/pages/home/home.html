@@ -9,6 +9,9 @@
 
 <ion-content class="content-wrapper">
   <div class="cards-container">
+    <div *ngIf="cards.length === 0" class="no-cards-message">
+      You don't have any cards yet.
+    </div>
     <div *ngFor="let card of cards" class="card-container" col-6>
       <ion-card class="card">
         <ion-card-header class="card-value">
