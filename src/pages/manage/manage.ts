@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
+import { DataProvider } from '../../providers/data/data';
 
 @IonicPage()
 @Component({
@@ -7,12 +8,63 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'manage.html',
 })
 export class ManagePage {
+  constructor(private alertCtrl: AlertController, private dataProvider: DataProvider) {}
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  showAddCardMenu() {
+    this.alertCtrl
+      .create({
+        title: 'Add a new card',
+        message: 'Enter the card\'s value',
+        inputs: [
+          {
+            name: 'card',
+            placeholder: 'Value'
+          }
+        ],
+        buttons: [
+          {
+            text: 'Cancel',
+            handler: _ => {}
+          },
+          {
+            text: 'Save',
+            handler: data => {
+              if (data && data.card) {
+                this.dataProvider.addCard(data.card);
+              }
+            }
+          }
+        ]
+      })
+      .present();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ManagePage');
+  showDeleteCardMenu() {
+    this.alertCtrl
+      .create({
+        title: 'Remove a card',
+        message: 'Enter the card\'s value',
+        inputs: [
+          {
+            name: 'card',
+            placeholder: 'Value'
+          }
+        ],
+        buttons: [
+          {
+            text: 'Cancel',
+            handler: _ => {}
+          },
+          {
+            text: 'Delete',
+            handler: data => {
+              if (data && data.card) {
+                this.dataProvider.removeCard(data.card);
+              }
+            }
+          }
+        ]
+      })
+      .present();
   }
-
 }

@@ -7,4 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding></ion-content>
+<ion-content no-bounce padding>
+  <button ion-button block color="primary" (click)="showAddCardMenu()">Add</button>
+  <button ion-button block color="danger" (click)="showDeleteCardMenu()">Delete</button>
+</ion-content>
