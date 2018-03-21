@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
-import { ActionSheetController } from 'ionic-angular';
+import {
+  ActionSheetController,
+  ActionSheetOptions,
+  ActionSheetButton
+} from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { Card } from '../../models/card-interface';
 import { DataProvider } from '../../providers/data/data';
 
 @Component({
@@ -8,10 +13,14 @@ import { DataProvider } from '../../providers/data/data';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  cards = Array<{ value: string }>();
-  selectedCard: { value: string };
+  cards: Array<Card> = [];
+  selectedCard: Card;
 
-  constructor(private actionSheetCtrl: ActionSheetController, private alertCtrl: AlertController, private dataProvider: DataProvider) {
+  constructor(
+    private actionSheetCtrl: ActionSheetController,
+    private alertCtrl: AlertController,
+    private dataProvider: DataProvider
+  ) {
     this.cards = this.dataProvider.getCards();
   }
 
@@ -19,11 +28,13 @@ export class HomePage {
     this.alertCtrl
       .create({
         title: 'Add a new card',
-        message: 'Enter the card\'s value',
-        inputs: [{
-          name: 'card',
-          placeholder: 'Value'
-        }],
+        message: "Enter the card's value",
+        inputs: [
+          {
+            name: 'card',
+            placeholder: 'Value'
+          }
+        ],
         buttons: [
           {
             text: 'Cancel',
@@ -46,11 +57,13 @@ export class HomePage {
     this.alertCtrl
       .create({
         title: 'Remove a card',
-        message: 'Enter the card\'s value',
-        inputs: [{
-          name: 'card',
-          placeholder: 'Value'
-        }],
+        message: "Enter the card's value",
+        inputs: [
+          {
+            name: 'card',
+            placeholder: 'Value'
+          }
+        ],
         buttons: [
           {
             text: 'Cancel',
@@ -70,31 +83,30 @@ export class HomePage {
   }
 
   showEditMenu() {
-    this.actionSheetCtrl
-      .create({
-        title: 'Modify your cards',
-        buttons: [
-          {
-            text: 'Add',
-            handler: _ => {
-              this.showAddCardMenu();
-            }
-          },
-          {
-            text: 'Delete',
-            role: 'destructive',
-            handler: _ => {
-              this.showDeleteCardMenu();
-            }
-          },
-          {
-            text: 'Cancel',
-            role: 'cancel',
-            handler: _ => {}
-          },
-        ]
-      })
-      .present();
+    const opt: ActionSheetOptions = {
+      title: 'Cards',
+      buttons: [
+        <ActionSheetButton>{
+          text: 'Add',
+          handler: _ => {
+            this.showAddCardMenu();
+          }
+        },
+        <ActionSheetButton>{
+          text: 'Delete',
+          role: 'destructive',
+          handler: _ => {
+            this.showDeleteCardMenu();
+          }
+        },
+        <ActionSheetButton>{
+          text: 'Cancel',
+          role: 'cancel',
+          handler: _ => {}
+        }
+      ]
+    };
+    this.actionSheetCtrl.create(opt).present();
   }
 
   selectCard(card: any) {

@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Card } from '../../models/card-interface';
 import { StorageProvider } from '../storage/storage';
-
-export class Card {
-  value: string
-}
 
 const DB_KEY = 'expresscards';
 
@@ -31,8 +28,10 @@ export class DataProvider {
   addCard(value: string) {
     let index = this.getIndexOfCard(value);
     if (index < 0) {
-      this.cardsDb.push({"value":value});
-      this.cardsDb.sort((a, b) => { return a.value > b.value });
+      this.cardsDb.push({ value: value });
+      this.cardsDb.sort((a: Card, b: Card): number => {
+        return a.value > b.value ? 1 : a.value < b.value ? -1 : 0;
+      });
       this.storageProvider.set(DB_KEY, this.cardsDb);
     }
   }
