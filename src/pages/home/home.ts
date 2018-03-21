@@ -84,7 +84,7 @@ export class HomePage {
 
   showEditMenu() {
     const opt: ActionSheetOptions = {
-      title: 'Cards',
+      // title: 'My Cards',
       buttons: [
         <ActionSheetButton>{
           text: 'Add',
