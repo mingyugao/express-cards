@@ -109,7 +109,7 @@ export class HomePage {
     this.actionSheetCtrl.create(opt).present();
   }
 
-  selectCard(card: any) {
-    this.selectedCard = card;
+  showCard(e: any) {
+    console.log(e);
   }
 }

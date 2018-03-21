@@ -16,7 +16,7 @@
       You don't have any cards yet.
     </div>
     <div *ngFor="let card of cards" class="card-container" col-6>
-      <ion-card class="card">
+      <ion-card class="card" (click)="showCard(card.value)">
         <ion-card-header class="card-value">
           {{card.value}}
         </ion-card-header>
