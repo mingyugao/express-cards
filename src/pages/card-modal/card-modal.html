@@ -1,8 +1,11 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title></ion-title>
-  </ion-navbar>
+  <button ion-button clear (click)="dismiss()">
+    Back
+  </button>
 </ion-header>
 
-
-<ion-content padding></ion-content>
+<ion-content padding>
+  <div class="value">
+    {{value}}
+  </div>
+</ion-content>

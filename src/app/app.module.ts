@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
+import { CardModalPage } from '../pages/card-modal/card-modal';
 import { HomePage } from '../pages/home/home';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -14,6 +15,7 @@ import { StorageProvider } from '../providers/storage/storage';
 @NgModule({
   declarations: [
     MyApp,
+    CardModalPage,
     HomePage
   ],
   imports: [
@@ -23,6 +25,7 @@ import { StorageProvider } from '../providers/storage/storage';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    CardModalPage,
     HomePage
   ],
   providers: [

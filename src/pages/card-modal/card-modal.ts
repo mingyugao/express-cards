@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavParams, ViewController } from 'ionic-angular';
 
-@IonicPage()
 @Component({
   selector: 'page-card-modal',
   templateUrl: 'card-modal.html',
@@ -9,7 +8,11 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 export class CardModalPage {
   value: string;
 
-  constructor(private navCtrl: NavController, private params: NavParams, private viewCtrl: ViewController) {
+  constructor(private params: NavParams, private viewCtrl: ViewController) {
     this.value = this.params.get('value');
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
   }
 }

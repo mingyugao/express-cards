@@ -113,6 +113,6 @@ export class HomePage {
 
   showCard(value: string) {
     console.log(value);
-    this.modalCtrl.create(CardModalPage, value).present();
+    this.modalCtrl.create(CardModalPage, { value: value }).present();
   }
 }
