@@ -4,9 +4,6 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>My Cards</ion-title>
-    <button ion-button clear class="edit" (click)="showEditMenu()">
-      Edit
-    </button>
   </ion-navbar>
 </ion-header>
 
@@ -16,7 +13,7 @@
       You don't have any cards yet.
     </div>
     <div *ngFor="let card of cards" class="card-container" col-6>
-      <ion-card class="card" (click)="showCard(card.value)">
+      <ion-card class="card" (click)="showCard(card.value)" on-hold="showCardOptionsMenu(card.value)">
         <ion-card-header class="card-value">
           {{card.value}}
         </ion-card-header>
@@ -24,3 +21,7 @@
     </div>
   </div>
 </ion-content>
+
+<ion-fab bottom right>
+  <button ion-fab color="primary" (click)="showAddCardMenu()">+</button>
+</ion-fab>

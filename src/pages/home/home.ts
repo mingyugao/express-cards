@@ -27,6 +27,10 @@ export class HomePage {
     this.cards = this.dataProvider.getCards();
   }
 
+  showCard(value: string) {
+    this.modalCtrl.create(CardModalPage, { value: value }).present();
+  }
+
   showAddCardMenu() {
     setTimeout(() => {
       this.alertCtrl
@@ -58,51 +62,18 @@ export class HomePage {
     }, 100);
   }
 
-  showDeleteCardMenu() {
-    setTimeout(() => {
-      this.alertCtrl
-        .create({
-          title: 'Remove a card',
-          message: "Enter the card's value",
-          inputs: [
-            {
-              name: 'card',
-              placeholder: 'Value'
-            }
-          ],
-          buttons: [
-            {
-              text: 'Cancel',
-              handler: _ => {}
-            },
-            {
-              text: 'Delete',
-              handler: data => {
-                if (data && data.card) {
-                  this.dataProvider.removeCard(data.card);
-                }
-              }
-            }
-          ]
-        })
-        .present();
-    }, 100);
-  }
-
-  showEditMenu() {
+  showCardOptionsMenu(value: string) {
     const opt: ActionSheetOptions = {
       buttons: [
         <ActionSheetButton>{
-          text: 'Add',
-          handler: _ => {
-            this.showAddCardMenu();
-          }
+          text: 'Edit',
+          handler: _ => {}
         },
         <ActionSheetButton>{
-          text: 'Delete',
+          text: 'Remove',
           role: 'destructive',
           handler: _ => {
-            this.showDeleteCardMenu();
+            this.dataProvider.removeCard(value);
           }
         },
         <ActionSheetButton>{
@@ -111,11 +82,7 @@ export class HomePage {
           handler: _ => {}
         }
       ]
-    };
+    }
     this.actionSheetCtrl.create(opt).present();
-  }
-
-  showCard(value: string) {
-    this.modalCtrl.create(CardModalPage, { value: value }).present();
   }
 }
