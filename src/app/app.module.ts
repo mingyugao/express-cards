@@ -15,7 +15,6 @@ import { StorageProvider } from '../providers/storage/storage';
 @NgModule({
   declarations: [
     MyApp,
-    CardModalPage,
     HomePage
   ],
   imports: [
