@@ -3,9 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { CardModalPage } from './card-modal';
 
 @NgModule({
-  declarations: [
-    CardModalPage,
-  ],
+  declarations: [],
   imports: [
     IonicPageModule.forChild(CardModalPage),
   ],
