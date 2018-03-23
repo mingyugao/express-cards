@@ -1,9 +1,14 @@
 page-card-modal {
+  .back {
+    height: 44px;
+    padding-top: 22px;
+  }
+
   .value {
     font-size: 100px;
     left: 50%;
     position: absolute;
     top: 50%;
-    transform: translate(-50%, -100%);
+    transform: translate(-50%, -80%);
   }
 }

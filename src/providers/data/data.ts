@@ -11,7 +11,16 @@ export class DataProvider {
   constructor(private storageProvider: StorageProvider) {
     let cardsDb = this.storageProvider.get(DB_KEY);
     if (!cardsDb) {
-      cardsDb = [];
+      cardsDb = [
+        { value: '0' },
+        { value: '0.5' },
+        { value: '1' },
+        { value: '2' },
+        { value: '3' },
+        { value: '4' },
+        { value: '5' },
+        { value: '?' }
+      ];
     }
     this.cardsDb = cardsDb;
   }

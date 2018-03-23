@@ -20,7 +20,14 @@ import { StorageProvider } from '../providers/storage/storage';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      platforms: {
+        ios: {
+          scrollAssist: false,
+          autoFocusAssist: false
+        }
+      }
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

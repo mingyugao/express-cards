@@ -28,61 +28,65 @@ export class HomePage {
   }
 
   showAddCardMenu() {
-    this.alertCtrl
-      .create({
-        title: 'Add a new card',
-        message: "Enter the card's value",
-        inputs: [
-          {
-            name: 'card',
-            placeholder: 'Value'
-          }
-        ],
-        buttons: [
-          {
-            text: 'Cancel',
-            handler: _ => {}
-          },
-          {
-            text: 'Save',
-            handler: data => {
-              if (data && data.card) {
-                this.dataProvider.addCard(data.card);
+    setTimeout(() => {
+      this.alertCtrl
+        .create({
+          title: 'Add a new card',
+          message: "Enter the card's value",
+          inputs: [
+            {
+              name: 'card',
+              placeholder: 'Value'
+            }
+          ],
+          buttons: [
+            {
+              text: 'Cancel',
+              handler: _ => {}
+            },
+            {
+              text: 'Save',
+              handler: data => {
+                if (data && data.card) {
+                  this.dataProvider.addCard(data.card);
+                }
               }
             }
-          }
-        ]
-      })
-      .present();
+          ]
+        })
+        .present();
+    }, 100);
   }
 
   showDeleteCardMenu() {
-    this.alertCtrl
-      .create({
-        title: 'Remove a card',
-        message: "Enter the card's value",
-        inputs: [
-          {
-            name: 'card',
-            placeholder: 'Value'
-          }
-        ],
-        buttons: [
-          {
-            text: 'Cancel',
-            handler: _ => {}
-          },
-          {
-            text: 'Delete',
-            handler: data => {
-              if (data && data.card) {
-                this.dataProvider.removeCard(data.card);
+    setTimeout(() => {
+      this.alertCtrl
+        .create({
+          title: 'Remove a card',
+          message: "Enter the card's value",
+          inputs: [
+            {
+              name: 'card',
+              placeholder: 'Value'
+            }
+          ],
+          buttons: [
+            {
+              text: 'Cancel',
+              handler: _ => {}
+            },
+            {
+              text: 'Delete',
+              handler: data => {
+                if (data && data.card) {
+                  this.dataProvider.removeCard(data.card);
+                }
               }
             }
-          }
-        ]
-      })
-      .present();
+          ]
+        })
+        .present();
+    }, 100);
   }
 
   showEditMenu() {
@@ -112,7 +116,6 @@ export class HomePage {
   }
 
   showCard(value: string) {
-    console.log(value);
     this.modalCtrl.create(CardModalPage, { value: value }).present();
   }
 }
