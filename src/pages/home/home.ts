@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import {
   ActionSheetController,
   ActionSheetOptions,
-  ActionSheetButton
+  ActionSheetButton,
+  AlertController,
+  ModalController
 } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
 import { Card } from '../../models/card-interface';
+import { CardModalPage } from '../card-modal/card-modal';
 import { DataProvider } from '../../providers/data/data';
 
 @Component({
@@ -19,6 +21,7 @@ export class HomePage {
   constructor(
     private actionSheetCtrl: ActionSheetController,
     private alertCtrl: AlertController,
+    private modalCtrl: ModalController,
     private dataProvider: DataProvider
   ) {
     this.cards = this.dataProvider.getCards();
@@ -84,7 +87,6 @@ export class HomePage {
 
   showEditMenu() {
     const opt: ActionSheetOptions = {
-      // title: 'My Cards',
       buttons: [
         <ActionSheetButton>{
           text: 'Add',
@@ -109,7 +111,8 @@ export class HomePage {
     this.actionSheetCtrl.create(opt).present();
   }
 
-  showCard(e: any) {
-    console.log(e);
+  showCard(value: string) {
+    console.log(value);
+    this.modalCtrl.create(CardModalPage, value).present();
   }
 }
