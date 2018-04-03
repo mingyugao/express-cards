@@ -6,6 +6,7 @@ import { NavParams, ViewController } from 'ionic-angular';
   templateUrl: 'card-modal.html',
 })
 export class CardModalPage {
+  shown: boolean = false;
   value: string;
 
   constructor(private params: NavParams, private viewCtrl: ViewController) {
@@ -14,5 +15,9 @@ export class CardModalPage {
 
   dismiss() {
     this.viewCtrl.dismiss();
+  }
+
+  flipCard(): void {
+    this.shown = !this.shown;
   }
 }

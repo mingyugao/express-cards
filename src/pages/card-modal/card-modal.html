@@ -1,11 +1,13 @@
 <ion-header>
-  <button ion-button clear class="back" (click)="dismiss()">
+  <button ion-button color="primary" clear class="back" (click)="dismiss()">
     Back
   </button>
 </ion-header>
 
 <ion-content no-bounce padding>
-  <div class="value">
-    {{value}}
-  </div>
+  <ion-card class="card" [ngClass]="{ shown: shown }" (click)="flipCard()">
+    <ion-card-header class="value">
+      {{value}}
+    </ion-card-header>
+  </ion-card>
 </ion-content>
