@@ -62,42 +62,46 @@ export class HomePage {
     }, 100);
   }
 
+  showEditCardMenu(value: string) {
+    setTimeout(() => {
+      this.alertCtrl
+        .create({
+          title: 'Editing card',
+          message: "Enter a new value",
+          inputs: [
+            {
+              name: 'newValue',
+              placeholder: 'New value'
+            }
+          ],
+          buttons: [
+            {
+              text: 'Cancel',
+              handler: _ => {}
+            },
+            {
+              text: 'Save',
+              handler: data => {
+                if (data && data.newValue) {
+                  this.dataProvider.removeCard(value)
+                  this.dataProvider.addCard(data.newValue);
+                }
+                this.cards = this.dataProvider.getCards();
+              }
+            }
+          ]
+        })
+        .present();
+    }, 100);
+  }
+
   showCardOptionsMenu(value: string) {
     const opt: ActionSheetOptions = {
       buttons: [
         <ActionSheetButton>{
           text: 'Edit',
           handler: _ => {
-            setTimeout(() => {
-              this.alertCtrl
-                .create({
-                  title: 'Editing card',
-                  message: "Enter a new value",
-                  inputs: [
-                    {
-                      name: 'newValue',
-                      placeholder: 'New value'
-                    }
-                  ],
-                  buttons: [
-                    {
-                      text: 'Cancel',
-                      handler: _ => {}
-                    },
-                    {
-                      text: 'Save',
-                      handler: data => {
-                        if (data && data.newValue) {
-                          this.dataProvider.removeCard(value)
-                          this.dataProvider.addCard(data.newValue);
-                        }
-                        this.cards = this.dataProvider.getCards();
-                      }
-                    }
-                  ]
-                })
-                .present();
-            }, 100);
+            this.showEditCardMenu(value);
           }
         },
         <ActionSheetButton>{

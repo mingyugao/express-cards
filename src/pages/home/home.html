@@ -1,9 +1,6 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>My Cards</ion-title>
+  <ion-navbar class="navbar">
+    <ion-title>Cards</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -23,5 +20,5 @@
 </ion-content>
 
 <ion-fab bottom right>
-  <button ion-fab color="primary" (click)="showAddCardMenu()">+</button>
+  <button ion-fab color="dark" class="fab" (click)="showAddCardMenu()">+</button>
 </ion-fab>
