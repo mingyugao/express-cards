@@ -39,7 +39,7 @@ export class HomePage {
           message: "Enter the card's value",
           inputs: [
             {
-              name: 'card',
+              name: 'value',
               placeholder: 'Value'
             }
           ],
@@ -51,8 +51,8 @@ export class HomePage {
             {
               text: 'Save',
               handler: data => {
-                if (data && data.card) {
-                  this.dataProvider.addCard(data.card);
+                if (data && data.value) {
+                  this.dataProvider.addCard(data.value);
                 }
               }
             }
@@ -67,7 +67,37 @@ export class HomePage {
       buttons: [
         <ActionSheetButton>{
           text: 'Edit',
-          handler: _ => {}
+          handler: _ => {
+            setTimeout(() => {
+              this.alertCtrl
+                .create({
+                  title: 'Editing card',
+                  message: "Enter a new value",
+                  inputs: [
+                    {
+                      name: 'newValue',
+                      placeholder: 'New value'
+                    }
+                  ],
+                  buttons: [
+                    {
+                      text: 'Cancel',
+                      handler: _ => {}
+                    },
+                    {
+                      text: 'Save',
+                      handler: data => {
+                        if (data && data.newValue) {
+                          this.dataProvider.removeCard(value)
+                          this.dataProvider.addCard(data.newValue);
+                        }
+                      }
+                    }
+                  ]
+                })
+                .present();
+            }, 100);
+          }
         },
         <ActionSheetButton>{
           text: 'Remove',
