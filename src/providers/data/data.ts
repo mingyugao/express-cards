@@ -21,11 +21,12 @@ export class DataProvider {
         { value: '5' },
         { value: '?' }
       ];
+      this.storageProvider.set(DB_KEY, cardsDb);
     }
     this.cardsDb = cardsDb;
   }
 
-  getIndexOfCard(value: string) {
+  getIndexOfCard(value: string): number {
     for (let i = 0; i < this.cardsDb.length; i++) {
       if (this.cardsDb[i].value === value) {
         return i;
@@ -34,13 +35,37 @@ export class DataProvider {
     return -1;
   }
 
+  sortCards() {
+    let numbers: Array<Card> = this.cardsDb
+      .filter(card => {
+        return !isNaN(parseFloat(card.value, 10));
+      })
+      .map(card => {
+        return {
+          value: parseFloat(card.value)
+        }
+      });
+    this.cardsDb = this.cardsDb.filter(card => {
+      return isNaN(parseFloat(card.value, 10))
+    });
+    numbers.sort((a, b): boolean => a.value > b.value);
+    this.cardsDb.sort((a: Card, b: Card): number => {
+      return a.value > b.value ? 1 : a.value < b.value ? -1 : 0;
+    });
+    this.cardsDb = numbers
+      .map(card => {
+        return {
+          value: card.value.toString()
+        }
+      })
+      .concat(this.cardsDb);
+  }
+
   addCard(value: string) {
     let index = this.getIndexOfCard(value);
     if (index < 0) {
       this.cardsDb.push({ value: value });
-      this.cardsDb.sort((a: Card, b: Card): number => {
-        return a.value > b.value ? 1 : a.value < b.value ? -1 : 0;
-      });
+      this.sortCards();
       this.storageProvider.set(DB_KEY, this.cardsDb);
     }
   }
@@ -53,7 +78,7 @@ export class DataProvider {
     }
   }
 
-  getCards() {
+  getCards(): Array<Card> {
     return this.cardsDb;
   }
 }

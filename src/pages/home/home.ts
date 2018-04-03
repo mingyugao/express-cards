@@ -16,7 +16,6 @@ import { DataProvider } from '../../providers/data/data';
 })
 export class HomePage {
   cards: Array<Card> = [];
-  selectedCard: Card;
 
   constructor(
     private actionSheetCtrl: ActionSheetController,
@@ -54,6 +53,7 @@ export class HomePage {
                 if (data && data.value) {
                   this.dataProvider.addCard(data.value);
                 }
+                this.cards = this.dataProvider.getCards();
               }
             }
           ]
@@ -91,6 +91,7 @@ export class HomePage {
                           this.dataProvider.removeCard(value)
                           this.dataProvider.addCard(data.newValue);
                         }
+                        this.cards = this.dataProvider.getCards();
                       }
                     }
                   ]
@@ -104,6 +105,7 @@ export class HomePage {
           role: 'destructive',
           handler: _ => {
             this.dataProvider.removeCard(value);
+            this.cards = this.dataProvider.getCards();
           }
         },
         <ActionSheetButton>{
