@@ -45,6 +45,7 @@ export class HomePage {
           buttons: [
             {
               text: 'Cancel',
+              role: 'cancel',
               handler: _ => {}
             },
             {
@@ -77,6 +78,7 @@ export class HomePage {
           buttons: [
             {
               text: 'Cancel',
+              role: 'cancel',
               handler: _ => {}
             },
             {
