@@ -36,9 +36,9 @@ export class DataProvider {
   }
 
   sortCards() {
-    let numbers: Array<Card> = this.cardsDb
+    let numbers: Array<{ value: number }> = this.cardsDb
       .filter(card => {
-        return !isNaN(parseFloat(card.value, 10));
+        return !isNaN(parseFloat(card.value));
       })
       .map(card => {
         return {
@@ -46,9 +46,11 @@ export class DataProvider {
         }
       });
     this.cardsDb = this.cardsDb.filter(card => {
-      return isNaN(parseFloat(card.value, 10))
+      return isNaN(parseFloat(card.value))
     });
-    numbers.sort((a, b): boolean => a.value > b.value);
+    numbers.sort((a: { value: number }, b: { value: number }): number => {
+      return a.value > b.value ? 1 : -1;
+    });
     this.cardsDb.sort((a: Card, b: Card): number => {
       return a.value > b.value ? 1 : a.value < b.value ? -1 : 0;
     });
