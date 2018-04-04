@@ -22,20 +22,5 @@ page-card-modal {
         transform: translate(-50%, -80%);
       }
     }
-
-    .card.shown {
-      animation: flip 0.8s;
-      animation-direction: alternate;
-      transform: rotateY(180deg);
-    }
   }
-}
-
-@keyframes flip {
-  0% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(180deg);
-  };
 }
