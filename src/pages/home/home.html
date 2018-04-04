@@ -1,6 +1,9 @@
 <ion-header>
-  <ion-navbar class="navbar">
-    <ion-title>Cards</ion-title>
+  <ion-navbar color="primary" class="navbar">
+    <ion-title>
+      <ion-icon class="title-icon" name="md-albums"></ion-icon>
+      <span class="title-text">Cards</span>
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -20,5 +23,7 @@
 </ion-content>
 
 <ion-fab bottom right>
-  <button ion-fab color="dark" class="fab" (click)="showAddCardMenu()">+</button>
+  <button ion-fab color="primary" class="fab" (click)="showAddCardMenu()">
+    <ion-icon name="md-add"></ion-icon>
+  </button>
 </ion-fab>
