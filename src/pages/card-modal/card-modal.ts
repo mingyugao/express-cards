@@ -3,7 +3,7 @@ import { NavParams, ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'page-card-modal',
-  templateUrl: 'card-modal.html',
+  templateUrl: 'card-modal.html'
 })
 export class CardModalPage {
   shown: boolean = false;

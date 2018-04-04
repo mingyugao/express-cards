@@ -4,8 +4,6 @@ import { CardModalPage } from './card-modal';
 
 @NgModule({
   declarations: [],
-  imports: [
-    IonicPageModule.forChild(CardModalPage),
-  ],
+  imports: [IonicPageModule.forChild(CardModalPage)]
 })
 export class CardModalPageModule {}

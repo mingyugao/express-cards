@@ -67,7 +67,7 @@ export class HomePage {
       this.alertCtrl
         .create({
           title: 'Editing card',
-          message: "Enter a new value",
+          message: 'Enter a new value',
           inputs: [
             {
               name: 'newValue',
@@ -83,7 +83,7 @@ export class HomePage {
               text: 'Save',
               handler: data => {
                 if (data && data.newValue) {
-                  this.dataProvider.removeCard(value)
+                  this.dataProvider.removeCard(value);
                   this.dataProvider.addCard(data.newValue);
                 }
                 this.cards = this.dataProvider.getCards();
@@ -118,7 +118,7 @@ export class HomePage {
           handler: _ => {}
         }
       ]
-    }
+    };
     this.actionSheetCtrl.create(opt).present();
   }
 }

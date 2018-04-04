@@ -43,10 +43,10 @@ export class DataProvider {
       .map(card => {
         return {
           value: parseFloat(card.value)
-        }
+        };
       });
     this.cardsDb = this.cardsDb.filter(card => {
-      return isNaN(parseFloat(card.value))
+      return isNaN(parseFloat(card.value));
     });
     numbers.sort((a: { value: number }, b: { value: number }): number => {
       return a.value > b.value ? 1 : -1;
@@ -58,7 +58,7 @@ export class DataProvider {
       .map(card => {
         return {
           value: card.value.toString()
-        }
+        };
       })
       .concat(this.cardsDb);
   }
